@@ -1,0 +1,160 @@
+/* STYLE CSS: Generali */
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+.float-right{
+    float: right;
+}
+
+/* STYLE CSS: Container img*/
+.img-container{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: 50px;
+    background-color: burlywood;
+}
+
+.img-container img{
+    width: 200px;
+    border-radius: 100%;
+}
+
+.img-container h1{
+    margin-top: 35px;
+    margin-left: 20px;
+    color: aliceblue;
+}
+
+/* STYLE CSS:Box in Container*/
+.in-box{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* STYLE CSS:Box in Container show-room*/
+.in-box .show-room p{
+    color: burlywood;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.in-box .show-room ul{
+    list-style: none;
+}
+
+.in-box .show-room ul li{
+    color: burlywood;
+}
+
+.in-box .show-room ul li img{
+    width: 100px;
+}
+/* FINE STYLE CSS:Box in Container show-room*/
+
+/* STYLE CSS:Box in Container Add element shop*/
+.in-box .add-element input{
+    margin:10px 20px 0px 5px;
+    margin-left: 60px;
+    border-radius: 20px;
+    border-color: burlywood;
+    padding: 4px;
+}
+
+.in-box .add-element input:focus{
+    outline: none;
+}
+
+.in-box .add-element #numeri{
+    width: 35px;
+    height: 15px;
+    margin:0px;
+    margin-left: 0px;
+    border-radius: 0px;
+    margin-top: 3px;
+    border-color: burlywood;
+    padding: 4px;
+}
+
+.in-box .add-element i {
+    color: burlywood;
+    cursor: pointer;
+    margin: 0px 5px;
+}
+
+.in-box .add-element h2{
+    color: burlywood;
+}
+
+.in-box .add-element .carrello {
+    margin: 10px 0px;
+}
+
+.in-box .add-element .carrello h2{
+    margin: 20px 0px;
+}
+
+.in-box .add-element .carrello ul {
+    color: burlywood;
+}
+
+.in-box .add-element .carrello ul li{
+    cursor: pointer;
+    margin: 5px 0px;
+    padding: 3px;
+}
+
+.in-box .add-element .carrello ul li:hover{
+    background-color: coral;
+}
+/*FINE STYLE CSS:Box in Container Add element shop*/
+
+/* STYLE CSS:Box in Container Add element Preferiti*/
+.in-box .preferiti{
+    display: flex;
+    flex-direction: column;
+}
+
+.in-box .preferiti i{
+    color: burlywood;
+    cursor: pointer;
+}
+
+.in-box .preferiti i .box-preferiti{
+    color:darkkhaki;
+}
+
+.in-box .preferiti i .box-preferiti span, button{
+    margin: 10px 0px;
+    color: burlywood;
+}
+
+.in-box .preferiti i .box-preferiti ul li {
+    margin: 7px 0px;
+}
+/* FINE STYLE CSS:Box in Container Add element Preferiti*/
+
+/* STYLE CSS: Pul conferma ordine*/
+#conferma-ordine{
+    margin-left: 630px;
+    border: 1px solid burlywood;
+    border-radius: 20px;
+    padding: 3px;
+    color: burlywood;
+    margin-top: 50px;
+    cursor: pointer;
+}
+/*FINE STYLE CSS: Pul conferma ordine*/
+
+/* STYLE CSS: Class generali*/
+.remove-active{
+    display: none;
+}
+
+.active{
+    display: inline-block;
+}
+/*FINE STYLE CSS: Class generali*/

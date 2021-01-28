@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- COLLEGAMENTO FOGLIO DI STYLE  -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- COLLEGAMENTO CDN VUE JS  -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- COLLEGAMENTO FONT AWESOME  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <title>TodoList, a modo mio</title>
+</head>
+<body>
+
+    <!--CONTAINER: Container in cui viene applicata l'azione di Vue js  -->
+    <div id="container">
+
+        <!--CONTAINER: Container img titolo  -->
+        <div class="img-container">
+            <img src="img/download (1).jpg" alt="">
+            <h1>Lab</h1>
+        </div>
+        <!-- FINE CONTAINER: Container img titolo  -->
+
+        <!--CONTAINER: box in container per shop  -->
+        <div class="in-box">
+
+            <!--CONTAINER: box in container per show-room  -->
+            <div class="show-room">
+
+                <!--CONTAINER: box in container per pulsante show-room  -->
+                <p @click='openShowRoom'>Open-Show-room</p>
+                <!-- FINE CONTAINER: box in container per pulsante show-room  -->
+
+                
+                <!--CONTAINER: box in container per lista show-room  -->
+                <ul :class='classAdd'>
+                    <li>jeans-normal-size </li>
+                    <li><img src="img/jeans-normal-size.jpg" alt=""></li>
+                    <li>jeans-skinny</li>
+                    <li><img src="img/jeans-skinny.jpg" alt=""></li>
+                    <li>jeans-strappo</li>
+                    <li><img src="img/jeans-strappo.jpg" alt=""></li>
+                    <li>t-shirt-nera</li>
+                    <li><img src="img/t-shirt-nera.jpg" alt=""></li>
+                    <li>t-shirt-red</li>
+                    <li><img src="img/t-shirt-red.jpg" alt=""></li>
+                    <li>t-shirt-personalizzata</li>
+                    <li><img src="img/t-shirt-personalizzata.jpg" alt=""></li>
+                </ul>
+                <!-- FINE CONTAINER: box in container per lista show-room  -->
+
+            </div>
+            <!-- FINE CONTAINER: box in container per show-room  -->
+            
+            <!-- CONTAINER: box in container per Add elemente carrello  -->
+            <div class="add-element">
+
+                <!-- CONTAINER: box in container per Add elemente carrello Titolo  -->
+                <h2>Aggiungi ciò che ti piace da qui:</h2>
+                <!-- FINE CONTAINER: box in container per Add elemente carrello Titolo  -->
+
+                <!-- CONTAINER: box in container per Add elemente carrello Input inserimento articolo + pulsante  -->
+                <input @keydown.enter='addElement' v-model='newClothing' type="text" placeholder="Aggiungi il nome..." name="" id="">
+                <i @click='addElement' class="fas fa-cart-arrow-down"> Add </i>
+                <!-- FINE CONTAINER: box in container per Add elemente carrello Input inserimento articolo + pulsante  -->
+
+                <!-- CONTAINER: box in container carrello   -->
+                <div class="carrello">
+
+                    <!-- CONTAINER: box in container carrello Titolo  -->
+                    <h2>Carrello:</h2>
+                    <!-- FINE CONTAINER: box in container carrello Titolo  -->
+
+                    <!-- CONTAINER: box in container carrello per Icons add o remove all  -->
+                    <i v-if='(carrello.length >=1)' @click='addAllElementPreferiti' class=' far fa-heart'>Add-All</i>
+                    <i v-if='(carrello.length >=1)' @click='deleteAllElement'  class="far fa-trash-alt">Remove-All</i>
+                    <!-- FINE CONTAINER: box in container carrello per Icons add o remove all  -->
+
+                    <!-- CONTAINER: box in container carrello per lista  -->
+                    <ul>
+                        <li v-if='(carrello.length == 0)'>Il carrello è vuoto</li>
+                        <li v-else v-for="(vestiti,index) in carrello" ><span @click='modifyElement(index)' >{{vestiti}} </span><i @click='removeElement(index)' class=" float-right far fa-times-circle"></i> <i @click='addElemenFavorite(index)' class=' float-right far fa-heart'></i> <input class="float-right" type="number" value="1" id="numeri"> </li>
+                    </ul>
+                    <!-- FINE CONTAINER: box in container carrello per lista  -->
+
+                </div>
+                <!-- FINE CONTAINER: box in container carrello   -->
+
+            </div>
+            <!-- FINE CONTAINER: box in container per Add elemente carrello  -->
+
+            <!-- CONTAINER: box in container per Add elemente preferiti  -->
+            <div class="preferiti">
+
+                <!-- CONTAINER: box in container per Add elemente preferiti pulsante apertura preferiti  -->
+                <i @click='openFavorite' class='far fa-heart'> Preferiti</i>
+
+                    <!-- CONTAINER: Box dei preferiti  -->
+                    <div :class='classAddFavorite' class="box-preferiti">
+
+                        <!-- CONTAINER: Pulsanti add elementi al carrello o delete elementi preferiti  -->
+                        <span @click='emptyFavorite'>all: <button>Empty</button> </span>
+                        <span v-if='(preferiti.length >= 1)'  @click='restoreAllElement' >all: <button>Add-carrello</button> </span>
+                        <!-- FINE CONTAINER: Pulsanti add elementi al carrello o delete elementi preferiti  -->
+
+                        <!-- CONTAINER: Lista elementi preferiti  -->
+                        <ul>
+                            <li v-if='(preferiti.length == 0)'>La lista dei preferiti è vuota</li>
+                            <li v-else v-for= "(vestiti,index) in preferiti">{{vestiti}} <i @click='deleteElement(index)' class=" float-right far fa-times-circle"></i> <i @click='restoreElement(index)' class=" float-right fas fa-cart-arrow-down"></i> </li>
+                        </ul>
+                        <!-- FINE CONTAINER: Lista elementi preferiti  -->
+
+                    </div>
+                    <!-- FINE CONTAINER: Box dei preferiti  -->
+                
+            </div>
+            <!-- FINE CONTAINER: box in container per Add elemente preferiti  -->
+
+        </div>
+        <!-- FINE CONTAINER: box in container per shop  -->
+        
+        <!-- CONTAINER: Conferma ordine -->
+        <i @click='confirmPl' id="conferma-ordine" class="fas fa-check">Conferma Ordine</i>
+        <!-- FINE CONTAINER: Conferma ordine -->
+
+    </div>
+    <!-- FINE CONTAINER: Container in cui viene applicata l'azione di Vue js  -->
+    
+
+    <!-- COLLEGAMENTOPAGINA SCRIPT  -->
+    <script src="js/script.js"></script>
+    <!-- FINE COLLEGAMENTOPAGINA SCRIPT  -->
+
+
+</body>
+</html>
